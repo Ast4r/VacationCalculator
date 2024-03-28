@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 public class VacationMoneyCalculationService {
     private static double AVERAGE_DAYS_IN_MOUNTH = 29.3;
     private static double NDFL = 0.13;
-    public VacationMoneyCalculationService(){};
+    public VacationMoneyCalculationService(){}
 
     public ServiceResponse Calculations(BigDecimal averageSalary, int vacationDays){
         BigDecimal totalPay = averageSalary.divide(BigDecimal.valueOf(AVERAGE_DAYS_IN_MOUNTH),2, RoundingMode.HALF_DOWN);
