@@ -1,22 +1,30 @@
 package neoflex.VacationCalculator.Controller;
 
-import neoflex.VacationCalculator.Model.ServiceResponse;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import neoflex.VacationCalculator.Service.VacationMoneyCalculationService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+
 @RestController
+@RequiredArgsConstructor
 public class VacationCalculatorController {
+
+    @NonNull
     private VacationMoneyCalculationService service;
 
-    public VacationCalculatorController(VacationMoneyCalculationService service){
-        this.service = service;
-    }
-@GetMapping("/calculate")
-    public ServiceResponse getVacationMoney(@RequestParam("averageSalary") BigDecimal averageSalary,
-                                            @RequestParam("vacationDays") int vacationDays){
-        return service.Calculations(averageSalary, vacationDays);
+    @GetMapping("/calculate")
+    @ResponseBody
+    public ResponseEntity<?> getVacationMoney(@RequestParam("averageSalary") BigDecimal averageSalary,
+                                              @RequestParam("vacationDays") int vacationDays){
+        BigDecimal money = service.Calculations(averageSalary, vacationDays);
+        return ResponseEntity.ok(money);
+
 }
 }
