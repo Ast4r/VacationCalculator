@@ -16,6 +16,12 @@ public class VacationMoneyCalculationService {
     private static final double NDFL = 0.13;
 
     public BigDecimal Calculations(BigDecimal averageSalary, int vacationDays) throws Exception {
+        //Проверка на допустимость значений,
+        //зарплата не может быть 0 или отрицательной,
+        //отпуск не может быть меньше 1 дня и больше 31
+        if(!CheckValidValues(averageSalary, vacationDays))
+            throw new Exception("Используются недопустимые значения");
+
         //Проверка соответствует ли значение средней зарплаты МРОТ на 2024 год
         if(!CheckMinimalWage(averageSalary))
             throw new Exception("Зарплата не соответствует МРОТ");
@@ -34,5 +40,10 @@ public class VacationMoneyCalculationService {
 
     private boolean CheckMinimalWage(BigDecimal averageSalary){
         return averageSalary.intValue() >= 19242;
+    }
+    private boolean CheckValidValues(BigDecimal averageSalary, int vacationDays){
+        if(averageSalary.intValue() <= 0 || (vacationDays > 31 || vacationDays < 1))
+            return false;
+        return true;
     }
 }
