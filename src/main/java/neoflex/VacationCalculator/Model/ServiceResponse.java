@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-
+//Класс используется в ResponseEntity для передачи ответа пользователю
 @Data
 @AllArgsConstructor
 public class ServiceResponse {
