@@ -1,5 +1,5 @@
-FROM eclipse-temurin:21
+FROM gradle:jdk11-alpine
+RUN mkdir /opt/app
+COPY build/libs/VacationCalculator-1.0.jar /opt/app/japp.jar
 EXPOSE 8080
-ARG JAR_FILE=target/demo-app-1.0.0.jar
-ADD ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+CMD ["java", "-jar", "/opt/app/japp.jar"]
