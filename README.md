@@ -16,6 +16,7 @@ API /calculate принимает среднюю зарплату сотрудн
 `gradle bootRun`
 # Docker
 Создание образа:
+
 `docker build . -t vacationCalculator`
 
 Запуск контейнера:
