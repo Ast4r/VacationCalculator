@@ -39,7 +39,7 @@ public class VacationMoneyCalculationService {
     }
 
     private boolean CheckMinimalWage(BigDecimal averageSalary){
-        return averageSalary.intValue() >= 19242*12;
+        return averageSalary.intValue() >= 19242;
     }
     private boolean CheckValidValues(BigDecimal averageSalary, int vacationDays){
         if(averageSalary.intValue() <= 0 || (vacationDays > 31 || vacationDays < 1))

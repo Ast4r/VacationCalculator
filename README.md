@@ -10,6 +10,7 @@ API /calculate принимает среднюю зарплату сотрудн
 В директории проекта:
 
 `gradle clean build`
+
 Запуск:
 
 `gradle bootRun`

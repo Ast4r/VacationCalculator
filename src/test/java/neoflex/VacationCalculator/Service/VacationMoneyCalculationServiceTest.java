@@ -26,4 +26,17 @@ public class VacationMoneyCalculationServiceTest {
         }
         Assertions.assertEquals(result.setScale(0, BigDecimal.ROUND_DOWN), BigDecimal.valueOf(83139));
     }
+    @Test
+    void vacationMoneyCalculationServiceFailureTest(){
+        BigDecimal averageSalary = new BigDecimal("100");
+        int vacationDays = 28;
+
+        BigDecimal result;
+        try {
+            result = vacationMoneyCalculationService.Calculations(averageSalary, vacationDays);
+        } catch (Exception e) {
+            Assertions.assertEquals(e.getMessage(), "Зарплата не соответствует МРОТ");
+        }
+
+    }
 }
