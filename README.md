@@ -9,7 +9,7 @@ API /calculate принимает среднюю зарплату сотрудн
 
 Запрос через curl или используя Postman для подсчета с учетом даты начала отпуска.
 
-[localhost:8080/calculate?averageSalary=100000&vacationDays=28&startOfVacation=01.01.2024](http://localhost:8080/calculate?averageSalary=100000&vacationDays=28 "localhost:8080/calculate?averageSalary=100000&vacationDays=28&startOfVacation=01.01.2024")
+[localhost:8080/calculate?averageSalary=100000&vacationDays=28&startOfVacation=01.01.2024](http://localhost:8080/calculate?averageSalary=100000&vacationDays=28&startOfVacation=01.01.2024 "localhost:8080/calculate?averageSalary=100000&vacationDays=28&startOfVacation=01.01.2024")
 # Сборка
 В директории проекта:
 
