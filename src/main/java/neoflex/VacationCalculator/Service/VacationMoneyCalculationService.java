@@ -6,15 +6,11 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-
-@Service
+//Сервис, который считает отпускные по количеству дней отпуска и средней месячной зарплате
+@Service("VacationMoneyCalculationService")
 @AllArgsConstructor
-public class VacationMoneyCalculationService {
-    //Среднее количество в месяце не високосного года
-    private static final double AVERAGE_DAYS_IN_MOUNTH = 29.3;
-    //Налог на доход в РФ
-    private static final double NDFL = 0.13;
-
+public class VacationMoneyCalculationService extends AbstractVacationCalculationService {
+    @Override
     public BigDecimal Calculations(BigDecimal averageSalary, int vacationDays) throws Exception {
         //Проверка на допустимость значений,
         //зарплата не может быть 0 или отрицательной,
@@ -38,10 +34,11 @@ public class VacationMoneyCalculationService {
         return totalPayWithNDFL;
     }
 
-    private boolean CheckMinimalWage(BigDecimal averageSalary){
-        return averageSalary.intValue() >= 19242;
+    @Override
+    protected boolean CheckMinimalWage(BigDecimal averageSalary){
+        return averageSalary.intValue() >= MINIMAL_SALARY;
     }
-    private boolean CheckValidValues(BigDecimal averageSalary, int vacationDays){
+    protected boolean CheckValidValues(BigDecimal averageSalary, int vacationDays){
         if(averageSalary.intValue() <= 0 || (vacationDays > 31 || vacationDays < 1))
             return false;
         return true;
